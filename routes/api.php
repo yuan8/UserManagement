@@ -22,19 +22,19 @@ Route::prefix('/')->group(function(){
 
 });
 
-Route::prefix('/sanbox')->group(function(){
+Route::prefix('/sanbox')->name('sanbox')->group(function(){
 
     Route::prefix('/app/{uuid}')->group(function(){
-        Route::prefix('/message')->group(function(){
-            Route::get('/',[\App\Http\Controllers\MessageCtrl,'index'])->name('.index');
-            Route::put('update/{id}',[\App\Http\Controllers\MessageCtrl,'update'])->name('.update');
-            Route::delete('delete/{id}',[\App\Http\Controllers\MessageCtrl,'destroy'])->name('.destroy');
-            Route::post('crete/',[\App\Http\Controllers\MessageCtrl,'store'])->name('.store');
+        Route::prefix('/message')->name('.message')->group(function(){
+            Route::get('/',[App\Http\Controllers\MessageCtrl::class,'index'])->name('.index');
+            Route::put('update/{id}',[App\Http\Controllers\MessageCtrl::class,'update'])->name('.update');
+            Route::delete('delete/{id}',[App\Http\Controllers\MessageCtrl::class,'destroy'])->name('.destroy');
+            Route::post('crete/',[App\Http\Controllers\MessageCtrl::class,'store'])->name('.store');
 
-        })->name('.message');
+        });
 
     });
-})->name('sanbox');
+});
 
 
 
