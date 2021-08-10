@@ -1,0 +1,116 @@
+nohup: can't detach from console: Undefined error: 0
+nohup: can't detach from console: Undefined error: 0
+[33m[nodemon] 2.0.6[39m
+[33m[nodemon] reading config ./nodemon.json[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] or send SIGHUP to 76629 to restart[39m
+[33m[nodemon] ignoring: *.setting.json *.status.json *.session.json[39m
+[33m[nodemon] watching path(s): *.*[39m
+[33m[nodemon] watching extensions: js,mjs,json[39m
+[32m[nodemon] starting `node ./app/WaBot/Production/user-1/app-1/app.js`[39m
+[33m[nodemon] forking[39m
+[33m[nodemon] child pid: 76631[39m
+{
+  app: true,
+  status: 3,
+  token: null,
+  pid: 76631,
+  status_2_attmp: 1,
+  number: '6287771079782',
+  state: 'CONNECTED'
+} 76631 undefined
+Database Connected!
+null OkPacket {
+  fieldCount: 0,
+  affectedRows: 0,
+  insertId: 0,
+  serverStatus: 2,
+  warningCount: 0,
+  message: '(Rows matched: 0  Changed: 0  Warnings: 0',
+  protocol41: true,
+  changedRows: 0
+}
+[33m[nodemon] watching 11968 files[39m
+[33m[nodemon] files triggering change check: storage/framework/cache/data/70/d5/70d5789fb8fa04f157e2f175d8e9158bc3d2b5c6[39m
+[33m[nodemon] changes after filters (before/after): 1/0[39m
+[33m[nodemon] files triggering change check: storage/framework/cache/data/70/d5/70d5789fb8fa04f157e2f175d8e9158bc3d2b5c6[39m
+[33m[nodemon] changes after filters (before/after): 1/0[39m
+Terotentikasi:  {
+  WABrowserId: '"cMXD+NKr+TMktTOuUrA3xg=="',
+  WASecretBundle: '{"key":"HH1jR4hCEJmWcxt9KHGI8dXwQNzW1WjIKWOJlvCg3k0=","encKey":"Xo/B53axcaSkjm8lqx232NgNsGoXehlPu5xNjAt2PV4=","macKey":"HH1jR4hCEJmWcxt9KHGI8dXwQNzW1WjIKWOJlvCg3k0="}',
+  WAToken1: '"B7X4RlqDYXcPp7HtX66znBW0lE78KXcVFE2X0Gzadao="',
+  WAToken2: '"1@S8Fqaf177hZvnx5E8AlbzSu4rdD8XyUGqoNkkIRw0IegdDDw7gIE2l+QdyDpQtvuuJpQ4z3AoZmOtg=="'
+}
+[33m[nodemon] files triggering change check: app/WaBot/Production/user-1/app-1/app.status.json[39m
+[33m[nodemon] changes after filters (before/after): 1/0[39m
+[33m[nodemon] files triggering change check: app/WaBot/Production/user-1/app-1/app.session.json[39m
+[33m[nodemon] changes after filters (before/after): 1/0[39m
+[33m[nodemon] files triggering change check: storage/framework/cache/data/52/ac/52acebe9de48b9434598fa65d2ec8d0e111e90b0[39m
+[33m[nodemon] changes after filters (before/after): 1/0[39m
+[33m[nodemon] files triggering change check: storage/framework/cache/data/70/d5/70d5789fb8fa04f157e2f175d8e9158bc3d2b5c6[39m
+[33m[nodemon] changes after filters (before/after): 1/0[39m
+whatapp  - 6287771079782 sudah siap!
+[33m[nodemon] files triggering change check: app/WaBot/Production/user-1/app-1/app.status.json[39m
+[33m[nodemon] changes after filters (before/after): 1/0[39m
+[33m[nodemon] files triggering change check: storage/framework/cache/data/70/d5/70d5789fb8fa04f157e2f175d8e9158bc3d2b5c6[39m
+[33m[nodemon] changes after filters (before/after): 1/0[39m
+[33m[nodemon] files triggering change check: storage/framework/cache/data/70/d5/70d5789fb8fa04f157e2f175d8e9158bc3d2b5c6[39m
+[33m[nodemon] changes after filters (before/after): 1/0[39m
+[32m[nodemon] still waiting for 1 sub-process to finish...[39m
+[33m[nodemon] exiting[39m
+[33m[nodemon] 2.0.6[39m
+[33m[nodemon] reading config ./nodemon.json[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] or send SIGHUP to 76676 to restart[39m
+[33m[nodemon] ignoring: *.setting.json *.status.json *.session.json[39m
+[33m[nodemon] watching path(s): *.*[39m
+[33m[nodemon] watching extensions: js,mjs,json[39m
+[32m[nodemon] starting `node ./app/WaBot/Production/user-1/app-1/app.js`[39m
+[33m[nodemon] forking[39m
+[33m[nodemon] child pid: 76678[39m
+{
+  app: true,
+  status: 3,
+  token: null,
+  pid: 76678,
+  status_2_attmp: 1,
+  number: '6287771079782',
+  state: 'CONNECTED'
+} 76678 undefined
+Database Connected!
+null OkPacket {
+  fieldCount: 0,
+  affectedRows: 0,
+  insertId: 0,
+  serverStatus: 2,
+  warningCount: 0,
+  message: '(Rows matched: 0  Changed: 0  Warnings: 0',
+  protocol41: true,
+  changedRows: 0
+}
+[33m[nodemon] watching 11968 files[39m
+[33m[nodemon] files triggering change check: storage/framework/cache/data/70/d5/70d5789fb8fa04f157e2f175d8e9158bc3d2b5c6[39m
+[33m[nodemon] changes after filters (before/after): 1/0[39m
+[33m[nodemon] files triggering change check: storage/framework/cache/data/70/d5/70d5789fb8fa04f157e2f175d8e9158bc3d2b5c6[39m
+[33m[nodemon] changes after filters (before/after): 1/0[39m
+Terotentikasi:  {
+  WABrowserId: '"cMXD+NKr+TMktTOuUrA3xg=="',
+  WASecretBundle: '{"key":"HH1jR4hCEJmWcxt9KHGI8dXwQNzW1WjIKWOJlvCg3k0=","encKey":"Xo/B53axcaSkjm8lqx232NgNsGoXehlPu5xNjAt2PV4=","macKey":"HH1jR4hCEJmWcxt9KHGI8dXwQNzW1WjIKWOJlvCg3k0="}',
+  WAToken1: '"Esb1xgGCcmF38i/DFHaDJy0+INlVNge4BObXMqIs2qw="',
+  WAToken2: '"1@LQYDBM8tN8iDuwuS4x5k9GL7qiJtNTwlS4wOpbjRxxUFULHHKDALxMnvTvPsyG3CoH8BSUo0o7RrQg=="'
+}
+[33m[nodemon] files triggering change check: app/WaBot/Production/user-1/app-1/app.status.json[39m
+[33m[nodemon] changes after filters (before/after): 1/0[39m
+[33m[nodemon] files triggering change check: app/WaBot/Production/user-1/app-1/app.session.json[39m
+[33m[nodemon] changes after filters (before/after): 1/0[39m
+[33m[nodemon] files triggering change check: storage/framework/cache/data/70/d5/70d5789fb8fa04f157e2f175d8e9158bc3d2b5c6[39m
+[33m[nodemon] changes after filters (before/after): 1/0[39m
+whatapp  - 6287771079782 sudah siap!
+[33m[nodemon] files triggering change check: app/WaBot/Production/user-1/app-1/app.status.json[39m
+[33m[nodemon] changes after filters (before/after): 1/0[39m
+[33m[nodemon] files triggering change check: storage/framework/cache/data/70/d5/70d5789fb8fa04f157e2f175d8e9158bc3d2b5c6[39m
+[33m[nodemon] changes after filters (before/after): 1/0[39m
+[33m[nodemon] files triggering change check: storage/framework/cache/data/70/d5/70d5789fb8fa04f157e2f175d8e9158bc3d2b5c6[39m
+[33m[nodemon] changes after filters (before/after): 1/0[39m
+[32m[nodemon] still waiting for 1 sub-process to finish...[39m
+[33m[nodemon] exiting[39m

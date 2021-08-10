@@ -1,24 +1,80 @@
 {
-    "private": true,
-    "scripts": {
-        "dev": "npm run development",
-        "development": "mix",
-        "watch": "mix watch",
-        "watch-poll": "mix watch -- --watch-options-poll=1000",
-        "hot": "mix watch --hot",
-        "prod": "npm run production",
-        "production": "mix --production"
-    },
-    "devDependencies": {
-        "axios": "^0.21.1",
-        "laravel-mix": "^6.0.6",
-        "lodash": "^4.17.19",
-        "postcss": "^8.1.14"
-    },
-    "dependencies": {
-        "bootstrap": "^5.0.2",
-        "jquery": "^3.6.0",
-        "popper.js": "^1.16.1",
-        "vue-router": "^4.0.10"
-    }
+  "private": true,
+  "scripts": {
+    "dev": "npm run development",
+    "development": "mix",
+    "watch": "mix watch",
+    "watch-poll": "mix watch -- --watch-options-poll=1000",
+    "hot": "mix watch --hot",
+    "prod": "npm run production",
+    "production": "mix --production"
+  },
+  "devDependencies": {
+    "axios": "^0.21",
+    "bootstrap": "^4.6.0",
+    "jquery": "^3.6",
+    "laravel-echo": "^1.10.0",
+    "laravel-mix": "^6.0.27",
+    "lodash": "^4.17.19",
+    "popper.js": "^1.16.1",
+    "postcss": "^8.1.14",
+    "pusher-js": "^7.0.3",
+    "resolve-url-loader": "^4.0.0",
+    "sass": "^1.32.11",
+    "sass-loader": "^12.1.0",
+    "vue": "^2.6.12",
+    "vue-loader": "^15.9.6",
+    "vue-template-compiler": "^2.6.12"
+  },
+  "dependencies": {
+    "datatables.net-bs4": "^3.2.2",
+    "datatables.net-buttons-bs4": "^1.7.1",
+    "datatables.net-colreorder-bs4": "^1.5.4",
+    "datatables.net-datetime": "^1.1.0",
+    "datatables.net-fixedcolumns-bs4": "^3.3.3",
+    "datatables.net-fixedheader-bs4": "^3.1.9",
+    "datatables.net-keytable-bs4": "^2.6.2",
+    "datatables.net-responsive-bs4": "^2.2.9",
+    "datatables.net-rowgroup-bs4": "^1.1.3",
+    "datatables.net-rowreorder-bs4": "^1.2.8",
+    "datatables.net-scroller-bs4": "^2.0.4",
+    "datatables.net-searchbuilder-bs4": "^1.1.0",
+    "datatables.net-searchpanes-bs4": "^1.3.0",
+    "install": "^0.13.0",
+    "jsdom": "^16.6.0",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.12",
+    "npm": "^7.20.5",
+    "pm2": "^5.1.0",
+    "qrcode-terminal": "^0.12.0",
+    "qrcode.vue": "^3.2.2",
+    "qs": "^6.10.1",
+    "socket.io-client": "^2.4.0",
+    "unicodechar-string": "^1.0.0",
+    "vue-qr": "^2.5.0",
+    "vue-router": "^3.5.2",
+    "vue-select": "^3.11.2",
+    "vue-select2": "^0.2.6",
+    "whatsapp-web.js": "^1.13.2"
+  },
+  "name": "@yuan8/waapi",
+  "description": "<p align=\"center\"><a href=\"https://laravel.com\" target=\"_blank\"><img src=\"https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg\" width=\"400\"></a></p>",
+  "version": "1.0.0",
+  "main": "webpack.mix.js",
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yuan8/UserManagement.git"
+  },
+  "author": "bhalayuan@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yuan8/UserManagement/issues"
+  },
+  "homepage": "https://github.com/yuan8/UserManagement#readme",
+  "keywords": [
+    "whatsapp"
+  ]
 }

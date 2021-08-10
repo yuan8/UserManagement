@@ -18,23 +18,26 @@ Route::middleware('auth:api')->get('/my-profile', function (Request $request) {
     return $request->user();
 });
 
-Route::prefix('/')->group(function(){
 
-});
+Route::prefix('/{env}/app/{uuid}')->name('api')->middleware('auth:api')->group(function(){
 
-Route::prefix('/sanbox')->name('sanbox')->group(function(){
+        Route::prefix('/egine')->name('.egine')->group(function(){
+            Route::post('/get-status',[App\Http\Controllers\EgineCtrl::class,'status'])->name('.status');
+            Route::post('/start',[App\Http\Controllers\EgineCtrl::class,'start'])->name('.start');
+            Route::post('/new-token',[App\Http\Controllers\EgineCtrl::class,'newToken'])->name('.new-token');
 
-    Route::prefix('/app/{uuid}')->group(function(){
+        });
+        
         Route::prefix('/message')->name('.message')->group(function(){
             Route::get('/',[App\Http\Controllers\MessageCtrl::class,'index'])->name('.index');
             Route::put('update/{id}',[App\Http\Controllers\MessageCtrl::class,'update'])->name('.update');
             Route::delete('delete/{id}',[App\Http\Controllers\MessageCtrl::class,'destroy'])->name('.destroy');
-            Route::post('crete/',[App\Http\Controllers\MessageCtrl::class,'store'])->name('.store');
-
+            Route::post('push/',[App\Http\Controllers\API\MessageCtrl::class,'store'])->name('.store');
         });
 
-    });
 });
+
+
 
 
 

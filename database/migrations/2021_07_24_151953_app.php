@@ -19,19 +19,18 @@ class App extends Migration
             $table->string('uuid')->unique();
             $table->string('name');
             $table->string('path_app');
-            $table->string('number_wa')->nullable();
+            $table->integer('wa_status')->default(0);
+            $table->integer('wa_pid')->nullable();
+            $table->string('wa_number')->nullable();
+            $table->string('wa_state')->nullable();
             $table->bigInteger('user_id')->unsigned();
             $table->integer('status_active')->default(1);
-            $table->integer('status_app')->nullable();
-            $table->integer('pid')->nullable();
-            $table->integer('port')->nullable();
             $table->string('host_attemp')->nullable();
             $table->string('host_receive')->nullable();
-            $table->string('token_login')->nullable();
             $table->string('token_access')->unique();
             $table->dateTime('active_until')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamps();
-            $table->unique(['number_wa','user_id']);
+            $table->unique(['wa_number','user_id']);
             $table->unique(['name','user_id']);
 
             $table->foreign('user_id')

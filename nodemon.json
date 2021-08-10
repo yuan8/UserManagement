@@ -1,0 +1,13 @@
+{
+  "verbose": true,
+  "ignore": ["*.setting.json", "*.status.json"],
+   "delay": 1500,
+   "ext":"js",
+  "execMap": {
+    "js": "node --harmony"
+  },
+  
+  "env": {
+    "NODE_ENV": "development"
+  }
+}

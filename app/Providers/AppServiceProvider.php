@@ -3,6 +3,12 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use JeroenNoten\LaravelAdminLte\Events\BuildingMenu;
+use Auth;
+use DB;
+use Illuminate\Support\Facades\View;
+use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Http\Request;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -11,6 +17,9 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
+
+
+  
     public function register()
     {
         //
@@ -21,8 +30,14 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(BuildingMenu $event,Request $request)
     {
-        //
+         
+
+
+
+        
+
+         
     }
 }
