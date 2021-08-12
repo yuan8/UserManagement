@@ -18,19 +18,19 @@
 
 @section('content')
    
-   <div class="row">
+   <div class="row" id="app_rekap">
       <div class="col-lg-3 col-6">
         <!-- small box -->
-        <div class="small-box bg-info">
+        <div class="small-box bg-info" v-if="rekap.mall">
           <div class="inner">
-            <h3>150</h3>
+            <h3>@{{rekap.mall.value}}</h3>
 
-            <p>Messages</p>
+            <p>@{{rekap.mall.unit}}</p>
           </div>
           <div class="icon">
             <i class="ion ion-bag"></i>
           </div>
-          <a href="#" class="small-box-footer">Detail <i class="fas fa-arrow-circle-right"></i></a>
+          <a v-bind:href="rekap.mall.url" class="small-box-footer">Detail <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
       <!-- ./col -->
@@ -126,6 +126,22 @@
 @section('js')
 
 <script type="text/javascript">
+    var rekap=new Vue({
+      'el':'#app_rekap',
+      'data':{
+        rekap:[]
+      },
+      methods:{
+        init:function(){
+          AXGET('{{route('api.message.rekap',['env'=>'production','uuid'=>$app->uuid])}}',{}).then(function(res){
+              console.log('res',res);
+          });
+        }
+      }
+    }); 
+
+    rekap.init();
+
     var dash_app_status=new Vue({
       'el':'#app_status',
       data:{

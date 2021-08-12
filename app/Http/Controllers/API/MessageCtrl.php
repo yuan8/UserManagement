@@ -12,6 +12,53 @@ class MessageCtrl extends Controller
 {
     //
 
+    public function rekap($env,$uuid,Request $request){
+        $user=Auth::User();
+        $app=DB::table('apps')->where([
+            'user_id'=>$user->id,
+            'uuid'=>$uuid 
+        ])->first();
+        if($app){
+            $count=DB::table('messages as m')->where(['app_id',$app->id])->selectRaw(
+                "
+                    count(case when m.status=1 then m.id else null end) as status_sended,
+                    count(case when m.status=0 then m.id else null end) as status_queue,
+                "
+            )->groupBy('m.status')->first();
+
+            if($count){
+                $return=[
+                    'mall'=>[
+                    'unit'=>'Messages',
+                    'value'=>($count->status_sended??0)+($count->status_queue??0),
+                    'url'=>''
+                ],
+                'queue'=>
+                    [
+                    'unit'=>'Messages Queue',
+                    'value'=>($count->status_queue??0).' / '.($count->status_sended??0),
+                    'url'=>''
+                    ]
+                ];
+
+                
+                return array(
+                    'code'=>200,
+                    'data'=>$return,
+                    'type'=>'html',
+                    'message'=>null
+                );
+            }
+        }
+
+        return array(
+            'code'=>200,
+            'data'=>[],
+            'type'=>'html',
+            'message'=>null
+        );
+    }
+
     public function store($env,$uuid,Request $request){
 
         $user=Auth::User();
