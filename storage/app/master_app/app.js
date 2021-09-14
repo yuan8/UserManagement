@@ -10,19 +10,19 @@ const https = require('https')
 var spawn = require('child_process').spawn;
 
 var con = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "uba2013?",
-    database: "whatapp_api",
-    port: 3306
+    host:db_host,
+    user: db_username,
+    password: db_pass,
+    database: db_name,
+    port: db_port
 });
 
 var app_={
-    app_id:1
+    app_id:app_data.id
 }
 
 var red_option={
-    host:'127.0.0.1',
+    host:db_host,
     port:6379,
     db:0
 }
@@ -75,7 +75,7 @@ process.on('exit', (code) => {
 var ClientOption={
     restartOnAuthFail: true,
     puppeteer: {
-        headless: false,
+        headless: true,
         takeoverOnConflict:false,
         //executablePath: 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe', //Windows x86
         //executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe', //Windows x64

@@ -30,9 +30,18 @@ class AppMiddleware
                 if($m_file=='app.js'){
                     if(!file_exists(app_path('WaBot/Production/user-'.$U->id.'/app-'.$app->id.'/'.$m_file ))){
                             $content=file_get_contents(storage_path('app/master_app/'.$m_file));
-                            $content=
-                            'var the_dirname="'.app_path('WaBot/Production/user-'.$U->id.'/app-'.$app->id).'";
-                            var app_data={id:'.$app->id.',name:"wabot-app-'.$app->id.'"};
+                            $content='
+var the_dirname="'.app_path('WaBot/Production/user-'.$U->id.'/app-'.$app->id).'";
+var app_data={id:'.$app->id.',name:"wabot-app-'.$app->id.'"};
+var db_host="'.env('DB_HOST').'";
+var db_username="'.env('DB_USERNAME').'";
+var db_name="'.env('DB_DATABASE').'";
+
+var db_pass="'.env('DB_PASSWORD').'";
+var db_port='.env('DB_PORT').';
+var redis_port='.env('REDIS_PORT').';
+var redis_host="'.env('REDIS_HOST').'";
+
                             '.$content;
                             Storage::disk('disk_app')->put('Production/user-'.$U->id.'/app-'.$app->id.'/'.$m_file,$content);
                     }
