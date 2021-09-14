@@ -3,8 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    
-
+ 
 <div class="row mb-2">
       <div class="col-sm-8">
         <h1>APP {{$app->name}}</h1>
@@ -19,28 +18,28 @@
 @section('content')
    
    <div class="row" id="app_rekap">
-      <div class="col-lg-3 col-6">
+      <div class="col-lg-3 col-6" v-if="rekap.mess">
         <!-- small box -->
-        <div class="small-box bg-info" v-if="rekap.mall">
+        <div class="small-box bg-info" >
           <div class="inner">
-            <h3>@{{rekap.mall.value}}</h3>
+            <h3>@{{rekap.mess.value}}</h3>
 
-            <p>@{{rekap.mall.unit}}</p>
+            <p>@{{rekap.mess.unit}}</p>
           </div>
           <div class="icon">
             <i class="ion ion-bag"></i>
           </div>
-          <a v-bind:href="rekap.mall.url" class="small-box-footer">Detail <i class="fas fa-arrow-circle-right"></i></a>
+          <a v-bind:href="rekap.mess.url" class="small-box-footer">Detail <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
       <!-- ./col -->
-      <div class="col-lg-3 col-6">
+      <div class="col-lg-3 col-6" v-if="rekap.queue">
         <!-- small box -->
-        <div class="small-box bg-success">
+        <div class="small-box bg-yellow">
           <div class="inner">
-            <h3>53<sup style="font-size: 20px">%</sup></h3>
+            <h3>@{{rekap.queue.value}} <span style="font-size:10px;">Success</span></h3>
 
-            <p>Message Qeue</p>
+            <p>@{{rekap.queue.unit}}</p>
           </div>
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
@@ -83,10 +82,11 @@
     <h4><b>Egine Status </b></h4>
     <div class="card" id="app_status">
         <div v-bind:class="'card-header '+(status.color) ">
-            @{{status_text}} 
+            <img onerror="imgError()" style="max-height: 50px; border-radius:50%; border: 1px solid #d0d0d0;" v-bind:src="(status.wa_status=='READY')?(urlhost+'/wa-file/'+status.wa_number+'/pp-'+status.wa_number+'.jpg?v='+(new Date())):avaerror" >
+            @{{(status.wa_status?(status.wa_status=='READY'?status.wa_status+' - '+status.wa_number:status.wa_status):'EGINE NOT RUNING')}} 
         </div>
       <div class="card-body">
-        <div class="row row-eq-height no-gutters" v-if="status.wa_status==2 && status.wa_token" >
+        <div class="row row-eq-height no-gutters" v-if="status.wa_status=='LOGIN QR' && status.wa_token" >
           <div class="col-6 text-center" >
             <div v-bind:style="'-webkit-transition: background-color 1000ms linear; -ms-transition: background-color 1000ms linear;transition: background-color 1000ms linear; '+'background-color:'+color+';'+'padding-top:10px; padding-bottom:10px; height:100%'  ">
             <vue-qr  v-bind:text="status.wa_token" qid="{{$app->uuid}}"></vue-qr>
@@ -108,15 +108,7 @@
         </div>
       </div>
     </div>
-   <div class="card text-dark bg-light vue-com" >
-     <div class="card-header">
-        <h5><b>Message Queue</b></h5>
-     </div>
-     <div class="card-body">
-      
-     </div>
-     <div class="card-footer text-muted">
-     </div>
+
    </div>
 @stop
 
@@ -126,6 +118,17 @@
 @section('js')
 
 <script type="text/javascript">
+  function imgError(){
+    var old_src=this.src;
+    setTimeout(()=>{
+      this.src='{{url('images/loader.gif')}}';
+    },500);
+    setTimeout(()=>{
+      this.src=old_src;
+    },3000);
+  }
+
+  var urlhost='{{url('dashboard/app/'.$app->uuid)}}';
     var rekap=new Vue({
       'el':'#app_rekap',
       'data':{
@@ -133,9 +136,11 @@
       },
       methods:{
         init:function(){
-          AXGET('{{route('api.message.rekap',['env'=>'production','uuid'=>$app->uuid])}}',{}).then(function(res){
-              console.log('res',res);
-          });
+          setInterval(function(){
+          AXPOST('{{route('api.message.rekap',['env'=>'production','uuid'=>$app->uuid])}}',{}).then(function(res){
+              window.rekap.rekap=res.data;
+            });
+          },2000);
         }
       }
     }); 
@@ -145,12 +150,14 @@
     var dash_app_status=new Vue({
       'el':'#app_status',
       data:{
+        urlhost:urlhost,
         color:"green",
+        avaerror:'{{url('images/loader.gif')}}',
         status:{
           "app":false,
           "x":0,
-          "wa_number":null,
-          "wa_status":null,
+          "wa_number":"",
+          "wa_status":"WAITING CONNECTION",
           "wa_token":null,
           "wa_pid":null,
           "color":""
@@ -159,42 +166,22 @@
       components: {VueQr},
       computed:{
         status_text:function(){
-          switch(parseInt(this.status.wa_status)){
-            case 0:
-              return 'Egine Stack try to restart';
-            break;
-            case 99:
-              return 'Restarting Server';
-            break;
-             case 1:
-              return 'App Start';
-            break;
-            case 2:
-              return 'Authorization Form';
-            break;
-            case 5:
-              return 'Whatsapp Ready - '+this.status.wa_number;
-            break;
-            default:
-            return '-';
-            break;
-
-          }
+          this.status.wa_status;
         }
       },
       watch:{
         "status.x":function(val,old) {
           switch(this.status.wa_status){
-            case 0:
+            case 'D':
               this.status.color='';
             break;
-             case 1:
+             case 'INITAL':
               this.status.color='bg-warning';
             break;
-            case 2:
+            case 'S':
               this.status.color='bg-primary';
             break;
-            case 5:
+            case 'READY':
               this.status.color='bg-green';
             break;
             default:
@@ -214,15 +201,14 @@
       },
       methods:{
         start_egine:function(){
-          this.status.wa_status=1;
+          this.status.wa_status='RESTART SERVER';
           this.status.wa_token=null;
-
           AXPOST('{{route('api.egine.start',['env'=>'production','uuid'=>$app->uuid])}}',{}).then(function(res){
               console.log('res',res);
           });
         },
         res_token:function(){
-          this.status.wa_status=99;
+          this.status.wa_status='DELETE TOKEN AKSES';
           this.status.wa_token=null;
 
           AXPOST('{{route('api.egine.new-token',['env'=>'production','uuid'=>$app->uuid])}}',{}).then(function(res){
@@ -232,10 +218,14 @@
         init:function(){
           setInterval(function(){
             AXPOST('{{route('api.egine.status',['env'=>'production','uuid'=>$app->uuid])}}',{}).then(function(res){
-              window.dash_app_status.status.wa_status=res.data.wa_status;
-              window.dash_app_status.status.wa_token=res.data.wa_token;
-              window.dash_app_status.status.wa_number=res.data.wa_number;
-              window.dash_app_status.status.x=Math.random();
+              // console.log(res);
+
+            if(res){
+                window.dash_app_status.status.wa_status=res.data.status_client;
+                window.dash_app_status.status.wa_token=res.data.qr_login;
+                window.dash_app_status.status.wa_number=res.data.user.user;
+                window.dash_app_status.status.x=Math.random();
+            }
 
             });
           },3000);

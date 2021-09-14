@@ -26,7 +26,6 @@ class Message extends Migration
             $table->mediumText('content_attach')->nullable();
             $table->integer('status')->default(0);
             $table->dateTime('send_date')->nullable();
-            $table->boolean('use_forward')->nullable()->default(0);
             $table->bigInteger('id_message_forward')->unsigned()->nullable();
             $table->timestamps();
             

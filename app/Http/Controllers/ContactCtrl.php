@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
+use Auth;
 
 class ContactCtrl extends Controller
 {
@@ -80,5 +82,15 @@ class ContactCtrl extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function contact(Request $request){
+        $U=Auth::User();
+        $app=DB::table('apps')->where('uuid',$request->uuid)->where('user_id',$U->id)->first();
+        if($app){
+          $contact=DB::table('contacts')->where('app_id',$app->id)->get();
+            return view('dash.contact.index')->with(['app'=>$app,"contacts"=>$contact]);
+
+        }
     }
 }

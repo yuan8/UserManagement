@@ -59,11 +59,7 @@ class RuningApp extends Command
         
                     $processFind =  Process::fromShellCommandline($f);
                     $processFind->run();
-                    // while ($processFind->isRunning()) {
-                    //     dd($processFind->getPid(),$processFind->getOutput());
-                    //     // code...
-                    // }
-                    // dd($processFind->getPid(),$f,Process::isTtySupported(),$processFind->getOutput());
+                   
                     if($processFind->getOutput()){
 
                         $processFind=explode("\n",$processFind->getOutput());
@@ -89,8 +85,7 @@ class RuningApp extends Command
 
                         if(isset($processFind[1])){
                             $listing_pid[]=$processFind[1];
-                           // $kill= shell_exec('kill -15 '.$processFind[1]);
-                           // (posix_kill((int)$processFind,-15));
+                        
                             $killProcess =  Process::fromShellCommandline('sudo kill -15 '.$processFind[1]);
                             $killProcess->run();
                             
@@ -101,7 +96,7 @@ class RuningApp extends Command
 
             if(($this->options()['kill'])){
 
-                return $app->name." kill";
+                return $app->name." 15";
                 
 
             }else{
@@ -110,7 +105,7 @@ class RuningApp extends Command
                
                   $p=  shell_exec($C." >/dev/null >/dev/null &");
                  
-               
+                    dd($p);
 
                
                 return $app->name. " new initialized ";

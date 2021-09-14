@@ -1,1 +1,1 @@
-welcome
+@extends('layouts.front')

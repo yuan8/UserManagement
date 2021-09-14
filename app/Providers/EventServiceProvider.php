@@ -38,7 +38,7 @@ class EventServiceProvider extends ServiceProvider
 
                 $event->menu->add([
                     'text' => 'New App',
-                    'url' => '',
+                    'url' => route('dash.app.new'),
                     'class'=>'btn btn-success',
                       'topnav_right' => true,
 

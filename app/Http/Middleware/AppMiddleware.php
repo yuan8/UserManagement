@@ -25,11 +25,15 @@ class AppMiddleware
         $apps=DB::table('apps')->where('user_id',$U->id)->get();
         foreach ($apps as $key => $app) {
             $master=scandir(storage_path('app/master_app'));
-
+             Storage::disk('disk_app')->put('Production/user-'.$U->id.'/app-'.$app->id.'/downloads/index.html','path err');
             foreach($master??[] as $m_file){
                 if($m_file=='app.js'){
                     if(!file_exists(app_path('WaBot/Production/user-'.$U->id.'/app-'.$app->id.'/'.$m_file ))){
                             $content=file_get_contents(storage_path('app/master_app/'.$m_file));
+                            $content=
+                            'var the_dirname="'.app_path('WaBot/Production/user-'.$U->id.'/app-'.$app->id).'";
+                            var app_data={id:'.$app->id.',name:"wabot-app-'.$app->id.'"};
+                            '.$content;
                             Storage::disk('disk_app')->put('Production/user-'.$U->id.'/app-'.$app->id.'/'.$m_file,$content);
                     }
                 }else if($m_file=='app.setting.json'){
@@ -43,9 +47,16 @@ class AppMiddleware
                 }else if($m_file=='app.status.json'){
                     if(!file_exists(app_path('WaBot/Production/user-'.$U->id.'/app-'.$app->id.'/'.$m_file))){
                         $content=[
-                            'wa_status'=>0,
-                            'wa_state'=>null,
-                            'wa_number'=>null,
+
+                             "browser_open"=>false,
+                            "wa_state"=>null,
+                            "wa_number"=>null,
+                            "pid_process"=>null,
+                            "status_client"=>null,
+                            "qr_login"=>null,
+                            "pid"=>null,
+                            "app_id"=>null,
+                            "qr_code"=>null,
                             'update_at'=>Carbon::now()
                         ];
                          Storage::disk('disk_app')->put('Production/user-'.$U->id.'/app-'.$app->id.'/'.$m_file,json_encode($content));
@@ -53,6 +64,8 @@ class AppMiddleware
 
                 }
             }
+
+            shell_exec('sudo chmod -R 777 '.app_path('WaBot/'));
         }
 
         return $next($request);

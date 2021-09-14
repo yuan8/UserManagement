@@ -1,7 +1,10 @@
 {
-	"wa_status":0,
-	"wa_state":null,
-	"wa_pid":null,
-	"updated_at":null,
-	"wa_token":null
+    "browser_open":false,
+    "wa_state":null,
+    "pid_process":null,
+    "status_client":null,
+    "qr_login":null,
+    "pid":null,
+    "app_id":null,
+    "qr_code":null
 }

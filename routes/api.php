@@ -31,7 +31,7 @@ Route::prefix('/{env}/app/{uuid}')->name('api')->middleware('auth:api')->group(f
         Route::prefix('/message')->name('.message')->group(function(){
             Route::get('/',[App\Http\Controllers\MessageCtrl::class,'index'])->name('.index');
             
-            Route::get('/rekap',[App\Http\Controllers\API\MessageCtrl::class,'rekap'])->name('.rekap');
+            Route::post('/rekap',[App\Http\Controllers\API\MessageCtrl::class,'rekap'])->name('.rekap');
 
             Route::put('update/{id}',[App\Http\Controllers\MessageCtrl::class,'update'])->name('.update');
             Route::delete('delete/{id}',[App\Http\Controllers\MessageCtrl::class,'destroy'])->name('.destroy');

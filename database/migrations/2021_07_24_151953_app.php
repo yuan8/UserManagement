@@ -30,7 +30,6 @@ class App extends Migration
             $table->string('token_access')->unique();
             $table->dateTime('active_until')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamps();
-            $table->unique(['wa_number','user_id']);
             $table->unique(['name','user_id']);
 
             $table->foreign('user_id')
